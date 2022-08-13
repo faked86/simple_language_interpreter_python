@@ -1,6 +1,6 @@
 from typing import TextIO
 
-from models.expression import Expression
+from models.interfaces import Expression
 from models.value import Value
 
 
@@ -21,9 +21,6 @@ class Addition(Expression):
         self.expression2.print_myself(output_stream)
         output_stream.write(")")
 
-    def get_value(self) -> int:
-        return self.value
-
 
 class Subtraction(Expression):
     def __init__(self, expr1: Expression, expr2: Expression) -> None:
@@ -41,6 +38,3 @@ class Subtraction(Expression):
         output_stream.write(" ")
         self.expression2.print_myself(output_stream)
         output_stream.write(")")
-
-    def get_value(self) -> int:
-        return self.value

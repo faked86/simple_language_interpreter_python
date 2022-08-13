@@ -1,9 +1,9 @@
 from typing import TextIO
 
-from models.expression import Expression
+from models.interfaces import Expression, ExpressionWithValue
 
 
-class Value(Expression):
+class Value(Expression, ExpressionWithValue):
     def __init__(self, value: int) -> None:
         self.value = value
 
