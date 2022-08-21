@@ -1,10 +1,12 @@
 from typing import TextIO
 
-from models.interfaces import Expression
+from models.base_classes import Expression
 from models.value import Value
 
 
 class Addition(Expression):
+    _tag: str = "add"
+
     def __init__(self, expr1: Expression, expr2: Expression) -> None:
         self.expression1 = expr1
         self.expression2 = expr2
@@ -15,7 +17,7 @@ class Addition(Expression):
         return Value(res1 + res2)
 
     def print_myself(self, output_stream: TextIO) -> None:
-        output_stream.write("(add ")
+        output_stream.write(f"({self.tag} ")
         self.expression1.print_myself(output_stream)
         output_stream.write(" ")
         self.expression2.print_myself(output_stream)
@@ -23,6 +25,8 @@ class Addition(Expression):
 
 
 class Subtraction(Expression):
+    _tag: str = "sub"
+
     def __init__(self, expr1: Expression, expr2: Expression) -> None:
         self.expression1 = expr1
         self.expression2 = expr2
@@ -33,7 +37,7 @@ class Subtraction(Expression):
         return Value(res1 - res2)
 
     def print_myself(self, output_stream: TextIO) -> None:
-        output_stream.write("(sub ")
+        output_stream.write(f"({self.tag} ")
         self.expression1.print_myself(output_stream)
         output_stream.write(" ")
         self.expression2.print_myself(output_stream)

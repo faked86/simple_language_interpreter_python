@@ -4,6 +4,12 @@ from typing import TextIO
 
 
 class Expression(ABC):
+    _tag: str
+
+    @property
+    def tag(self):
+        return self._tag
+
     @abstractmethod
     def evaluate(self, environment: dict[str, Expression]) -> Expression:
         ...
@@ -13,7 +19,7 @@ class Expression(ABC):
         ...
 
 
-class ExpressionWithValue(ABC):
+class ExpressionWithValueMixin(ABC):
     @abstractmethod
     def get_value(self) -> int:
         ...

@@ -1,9 +1,11 @@
 from typing import TextIO
 
-from models.interfaces import Expression, ExpressionWithValue
+from models.base_classes import Expression, ExpressionWithValueMixin
 
 
-class Value(Expression, ExpressionWithValue):
+class Value(Expression, ExpressionWithValueMixin):
+    _tag: str = "val"
+
     def __init__(self, value: int) -> None:
         self.value = value
 
@@ -11,7 +13,7 @@ class Value(Expression, ExpressionWithValue):
         return self
 
     def print_myself(self, output_stream: TextIO) -> None:
-        output_stream.write(f"(val {self.value})")
+        output_stream.write(f"({self.tag} {self.value})")
 
     def get_value(self) -> int:
         return self.value
