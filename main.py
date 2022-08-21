@@ -8,7 +8,6 @@ def main():
     val2 = Value(2)
     sum = Subtraction(val1, val2)
     print(sum)
-    print()
     print(sum.evaluate({}))
 
 

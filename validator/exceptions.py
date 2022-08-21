@@ -1,0 +1,6 @@
+class ValidationError(Exception):
+    ...
+
+
+class CheckerError(Exception):
+    ...
