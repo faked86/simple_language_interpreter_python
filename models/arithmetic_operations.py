@@ -16,12 +16,8 @@ class Addition(Expression):
         res2 = self.expression2.evaluate(environment).get_value()
         return Value(res1 + res2)
 
-    def print_myself(self, output_stream: TextIO) -> None:
-        output_stream.write(f"({self.tag} ")
-        self.expression1.print_myself(output_stream)
-        output_stream.write(" ")
-        self.expression2.print_myself(output_stream)
-        output_stream.write(")")
+    def __str__(self) -> str:
+        return f"({self.tag} {self.expression1} {self.expression2})"
 
 
 class Subtraction(Expression):
@@ -36,9 +32,5 @@ class Subtraction(Expression):
         res2 = self.expression2.evaluate(environment).get_value()
         return Value(res1 - res2)
 
-    def print_myself(self, output_stream: TextIO) -> None:
-        output_stream.write(f"({self.tag} ")
-        self.expression1.print_myself(output_stream)
-        output_stream.write(" ")
-        self.expression2.print_myself(output_stream)
-        output_stream.write(")")
+    def __str__(self) -> str:
+        return f"({self.tag} {self.expression1} {self.expression2})"

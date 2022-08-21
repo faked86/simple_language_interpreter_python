@@ -15,7 +15,7 @@ class Expression(ABC):
         ...
 
     @abstractmethod
-    def print_myself(self, output_stream: TextIO) -> None:
+    def __str__(self) -> str:
         ...
 
 
